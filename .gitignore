@@ -5,3 +5,6 @@
 *.jar
 *.xml
 /build.properties
+/spec.i
+/.cproject
+/.project
