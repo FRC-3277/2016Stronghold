@@ -3,8 +3,8 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 
-//01/19/2016
-//Today's date
+//01/20/2016
+//Tomorrow's date
 
 class Robot: public IterativeRobot
 {
