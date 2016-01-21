@@ -6,9 +6,11 @@
 class OI
 {
 private:
+		Joystick stick;
 
 public:
 	OI();
+	float getjoystickyaxis();
 };
 
 #endif
