@@ -17,11 +17,12 @@ void DriveWithJoystick::InitDefaultCommand()
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void DriveWithJoystick:: setdrive(float speed){
+void DriveWithJoystick::setdrive(float speed){
 	right.Set(speed);
 	left.Set(-speed);
 }
-void DriveWithJoystick:: openmotors(){
+
+void DriveWithJoystick::openmotors(){
 	right.SetControlMode(right.kPercentVbus);
 	right.SetSafetyEnabled(true);
 	right.Set(0);

@@ -1,7 +1,8 @@
 #include "DriveRobot.h"
 
 DriveRobot::DriveRobot()
-{ Requires(DriveWithJoystick);
+{
+	//Requires(DriveWithJoystick);
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }

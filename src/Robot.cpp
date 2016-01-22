@@ -2,6 +2,7 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "Subsystems/DriveWithJoystick.h"
 
 //01/20/2016
 //Tomorrow's date
@@ -18,7 +19,10 @@ private:
 		chooser = new SendableChooser();
 		chooser->AddDefault("Default Auto", new ExampleCommand());
 		//chooser->AddObject("My Auto", new MyAutoCommand());
-		SmartDashboard::PutData("Auto Modes", chooser);
+		//SmartDashboard::PutData("Auto Modes", chooser);
+		DriveWithJoystick *driveTrain = new DriveWithJoystick();
+		OI *operatorInput = new OI();
+		driveTrain->setdrive(operatorInput->getjoystickyaxis());
 	}
 
 	/**

@@ -19,6 +19,8 @@ const int RIGHT_MOTOR_JAGUAR_CAN_ID = 2;
 const int LEFT_MOTOR_JAGUAR_CAN_ID = 3;
 const int POWER_BOARD_CAN_ID = 10;
 
+const int JOYSTICK_CONTROLLER = 0;
+
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;
