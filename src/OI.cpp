@@ -1,10 +1,11 @@
 #include "OI.h"
 #include "RobotMap.h"
+#include "Commands/DriveRobot.h"
 
 OI::OI() : stick(JOYSTICK_CONTROLLER)
 {
-	JoystickButton *trigger = new JoystickButton(stick, 1);
-	//trigger->WhenPressed(new DriveRobot());
+	JoystickButton *trigger = new JoystickButton(&stick, 1);
+	trigger->WhenPressed(new DriveRobot());
 	// Process operator interface input here.
 }
 

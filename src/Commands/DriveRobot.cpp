@@ -1,8 +1,9 @@
 #include "DriveRobot.h"
+#include "../Subsystems/DriveWithJoystick.h"
 
-DriveRobot::DriveRobot()
+DriveRobot::DriveRobot():CommandBase("DriveRobot")
 {
-	//Requires(DriveWithJoystick);
+	Requires(Robot::drivetrain.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }

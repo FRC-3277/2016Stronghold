@@ -3,6 +3,7 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include "../Robot.cpp"
 
 class DriveRobot: public CommandBase
 {

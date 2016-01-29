@@ -6,9 +6,12 @@
 
 //01/20/2016
 //Tomorrow's date
-
+std::shared_ptr<DriveTrain> Robot::driveTrain;
 class Robot: public IterativeRobot
 {
+public:
+	static std::shared_ptr<DriveWithJoystick> drivetrain;
+
 private:
 	std::unique_ptr<Command> autonomousCommand;
 	SendableChooser *chooser;
@@ -20,9 +23,12 @@ private:
 		chooser->AddDefault("Default Auto", new ExampleCommand());
 		//chooser->AddObject("My Auto", new MyAutoCommand());
 		//SmartDashboard::PutData("Auto Modes", chooser);
-		DriveWithJoystick *driveTrain = new DriveWithJoystick();
+		//drivetrain.reset(new DriveWithJoystick());
+		drivetrain.reset();
+
 		OI *operatorInput = new OI();
-		driveTrain->setdrive(operatorInput->getjoystickyaxis());
+		//driveTrain->setdrive(operatorInput->getjoystickyaxis());
+		//TODO: Replace with correct version!
 	}
 
 	/**
