@@ -25,12 +25,13 @@ DriveWithJoysticks::DriveWithJoysticks(): Command() {
 
 // Called just before this Command runs the first time
 void DriveWithJoysticks::Initialize() {
-
+	Robot::driveTrain.get()->openmotors();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoysticks::Execute() {
-
+	Robot::driveTrain.get()->setdrive(Robot::oi.get()->getXBoxController().get()->GetY(),
+			Robot::oi.get()->getXBoxController().get()->GetRawAxis(5));
 }
 
 // Make this return true when this Command no longer needs to run execute()
