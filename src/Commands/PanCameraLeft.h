@@ -8,7 +8,7 @@
 class PanCameraLeft: public Command
 {
 private:
-	std::shared_ptr<CameraMount> camraMount;
+	//std::shared_ptr<CameraMount> camraMount;
 
 public:
 	PanCameraLeft();

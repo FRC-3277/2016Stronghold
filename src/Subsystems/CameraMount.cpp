@@ -1,14 +1,16 @@
 #include "CameraMount.h"
 #include "../RobotMap.h"
+#include "../Commands/PanCameraLeft.h"
 
 CameraMount::CameraMount() :
-		Subsystem("ExampleSubsystem")
+		Subsystem("CameraMount")
 {
 	angle = 0;
 }
 
 void CameraMount::InitDefaultCommand()
 {
+	SetDefaultCommand(new PanCameraLeft());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
