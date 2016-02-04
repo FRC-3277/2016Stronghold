@@ -15,6 +15,7 @@ public:
 	void InitDefaultCommand();
 	void Raise();
 	void PullUp();
+	void Stop();
 };
 
 #endif
