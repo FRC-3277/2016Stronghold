@@ -66,16 +66,6 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
-	auto grip = NetworkTable::GetTable("grip");
-
-	/* Get published values from GRIP using NetworkTables */
-	auto areas = grip->GetNumberArray("targets/area", llvm::ArrayRef<double>());
-
-	for (auto area : areas)
-	{
-		std::cout << "Got contour with area=" << area << std::endl;
-	}
-
 	Scheduler::GetInstance()->Run();
 }
 
@@ -90,10 +80,20 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	std::cout << "Start" << std::endl;
 }
 
 void Robot::TestPeriodic() {
 	lw->Run();
+	auto grip = NetworkTable::GetTable("GRIP");
+
+	/* Get published values from GRIP using NetworkTables */
+	auto areas = grip->GetNumberArray("ContoursReport/area", llvm::ArrayRef<double>());
+
+	for (auto area : areas)
+	{
+		std::cout << "Got contour with area=" << area << std::endl;
+	}
 }
 
 START_ROBOT_CLASS(Robot);
