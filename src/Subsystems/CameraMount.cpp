@@ -10,7 +10,7 @@ CameraMount::CameraMount() :
 
 void CameraMount::InitDefaultCommand()
 {
-	SetDefaultCommand(new PanCameraLeft());
+	//SetDefaultCommand(new PanCameraLeft());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
