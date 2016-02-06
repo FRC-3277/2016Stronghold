@@ -45,11 +45,12 @@ void DriveTrain::setdrive(float speedleft, float speedright){
 }
 
 void DriveTrain::openmotors(){
-	cANJaguarRight.get()->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	cANJaguarLeft.get()->SetControlMode(CANSpeedController::kPercentVbus);
+	cANJaguarRight.get()->SetControlMode(CANSpeedController::kPercentVbus);
 	cANJaguarRight.get()->EnableControl();
 	cANJaguarRight.get()->Set(0.0f);
 
-	cANJaguarLeft.get()->SetPercentMode(CANJaguar::QuadEncoder, 360);
+	//cANJaguarLeft.get()->SetPercentMode(CANJaguar::QuadEncoder, 360);
 	cANJaguarLeft.get()->EnableControl();
 	cANJaguarLeft.get()->Set(0.0f);
 }
