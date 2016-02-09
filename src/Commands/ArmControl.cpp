@@ -22,7 +22,6 @@ void ArmControl::Execute()
 	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(1)){
 		Robot::lifter.get()->PullUp();
 	}
-
 }
 
 // Make this return true when this Command no longer needs to run execute()

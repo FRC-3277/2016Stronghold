@@ -4,7 +4,7 @@
 Lifter::Lifter() :
 		Subsystem("ExampleSubsystem")
 {
-	lifterCANJaguar = RobotMap::lifterCANJaguar;
+	lifterCANJaguar = RobotMap::lifterCANTalon;
 	lifterCANJaguar.get()->SetControlMode(CANTalon::kPercentVbus);
 	lifterCANJaguar.get()->EnableControl();
 	lifterCANJaguar.get()->Set(0.0f);
