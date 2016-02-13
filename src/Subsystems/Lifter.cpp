@@ -20,6 +20,18 @@ void Lifter::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Lifter::pushArmOut(){
+	armLinearActuator.get()->Set(1);
+}
+
+void Lifter::pullArmIn(){
+	armLinearActuator.get()->Set(-1);
+}
+
+void Lifter::stopHorizontal(){
+	armLinearActuator.get()->Set(0);
+}
+
 void Lifter::Raise(){
 	lifterCANJaguar.get()->Set(.5);
 }
