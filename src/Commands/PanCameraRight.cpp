@@ -1,7 +1,7 @@
-#include "PanCameraLeft.h"
+#include "PanCameraRight.h"
 #include "Subsystems/CameraMount.h"
 
-PanCameraLeft::PanCameraLeft() : Command()
+PanCameraRight::PanCameraRight() : Command()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -9,32 +9,32 @@ PanCameraLeft::PanCameraLeft() : Command()
 }
 
 // Called just before this Command runs the first time
-void PanCameraLeft::Initialize()
+void PanCameraRight::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void PanCameraLeft::Execute()
+void PanCameraRight::Execute()
 {
-	Robot::camraMount.get()->panLeft();
+	Robot::camraMount.get()->panRight();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool PanCameraLeft::IsFinished()
+bool PanCameraRight::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void PanCameraLeft::End()
+void PanCameraRight::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void PanCameraLeft::Interrupted()
+void PanCameraRight::Interrupted()
 {
 
 }

@@ -71,6 +71,10 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	for(int i = 0; i < 10; i++){
+		printf("Axis %d: %f\n", i, oi.get()->getXBoxController().get()->GetRawAxis(i));
+	}
+	printf("\n");
 }
 
 void Robot::TestPeriodic() {

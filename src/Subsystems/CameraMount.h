@@ -14,7 +14,8 @@ private:
 
 	std::shared_ptr<CameraMount> camraMount;
 
-	float angle;
+	float panAngle;
+	float tiltAngle;
 
 public:
 	CameraMount();
