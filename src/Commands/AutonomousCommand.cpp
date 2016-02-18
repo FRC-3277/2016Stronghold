@@ -38,7 +38,7 @@ void AutonomousCommand::Execute() {
 
 	if(CheckDigitalInputChannel(1))
 		Robot::lifter.get()->PullUp();
-	else
+	else if(CheckDigitalInputChannel(2))
 		Robot::lifter.get()->Raise();
 
 }

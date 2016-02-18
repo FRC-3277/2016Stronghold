@@ -45,7 +45,7 @@ void CameraMount::TiltUp(){
 		if(tiltAngle > 180)
 			tiltAngle = 180;
 
-		camraPanServo.get()->SetAngle(tiltAngle);
+		camraTiltServo.get()->SetAngle(tiltAngle);
 }
 
 void CameraMount::TiltDown(){
@@ -53,5 +53,5 @@ void CameraMount::TiltDown(){
 		if(tiltAngle < 0)
 			tiltAngle = 0;
 
-		camraPanServo.get()->SetAngle(tiltAngle);
+		camraTiltServo.get()->SetAngle(tiltAngle);
 }
