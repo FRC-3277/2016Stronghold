@@ -17,6 +17,8 @@
 std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonRight;
 std::shared_ptr<RobotDrive> RobotMap::driveTrainRobotDrive21;
+std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonLeft2;
+std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonRight2;
 std::shared_ptr<CANTalon> RobotMap::lifterCANTalon;
 std::shared_ptr<CANTalon> RobotMap::boulderBlasterCANTalon;
 
@@ -51,6 +53,14 @@ void RobotMap::init() {
     lw->AddActuator("DriveTrain", "CAN Talon Right", driveTrainCANTalonRight);
     driveTrainCANTalonRight.get()->SetInverted(true);
     
+    driveTrainCANTalonLeft2.reset(new CANTalon(3));
+       lw->AddActuator("DriveTrain", "CAN Talon Left 2", driveTrainCANTalonLeft2);
+       driveTrainCANTalonLeft2.get()->SetInverted(true);
+
+       driveTrainCANTalonRight2.reset(new CANTalon(4));
+       lw->AddActuator("DriveTrain", "CAN Talon Right 2", driveTrainCANTalonRight2);
+       driveTrainCANTalonRight2.get()->SetInverted(true);
+
     lifterCANTalon.reset(new CANTalon(5));
     lw->AddActuator("DriveTrain", "CAN Lifter", lifterCANTalon);
 
@@ -67,7 +77,8 @@ void RobotMap::init() {
 
 
        //lifterCANJaguar.get()->ConfigLimitMode(lifterCANJaguar.get()->kLimitMode_SwitchInputsOnly);
-    	driveTrainRobotDrive21.reset(new RobotDrive(driveTrainCANTalonLeft, driveTrainCANTalonRight));
+    	driveTrainRobotDrive21.reset(new RobotDrive(driveTrainCANTalonLeft,
+    		 driveTrainCANTalonLeft2, driveTrainCANTalonRight, driveTrainCANTalonRight2));
     
     driveTrainRobotDrive21->SetSafetyEnabled(true);
         driveTrainRobotDrive21->SetExpiration(0.1);

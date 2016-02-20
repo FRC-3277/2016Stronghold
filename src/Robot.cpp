@@ -33,6 +33,9 @@ void Robot::RobotInit() {
 	// which commands extend), subsystems are not guaranteed to be
 	// yet. Thus, their requires() statements may grab null pointers. Bad
 	// news. Don't move it.
+    CameraServer::GetInstance()->SetQuality(50);
+   	//the camera name (ex "cam0") can be found through the roborio web interface
+    CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 	oi.reset(new OI());
 	Switch1.reset(new Switches());
 	// instantiate the command used for the autonomous period
