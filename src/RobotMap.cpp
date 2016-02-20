@@ -21,6 +21,7 @@ std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonLeft2;
 std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonRight2;
 std::shared_ptr<CANTalon> RobotMap::lifterCANTalon;
 std::shared_ptr<CANTalon> RobotMap::boulderBlasterCANTalon;
+std::shared_ptr<CANTalon> RobotMap::armCANTalon;
 
 
 
@@ -62,7 +63,10 @@ void RobotMap::init() {
        driveTrainCANTalonRight2.get()->SetInverted(true);
 
     lifterCANTalon.reset(new CANTalon(5));
-    lw->AddActuator("DriveTrain", "CAN Lifter", lifterCANTalon);
+    lw->AddActuator("Lifter", "CAN Lifter", lifterCANTalon);
+
+    armCANTalon.reset(new CANTalon(7));
+    lw->AddActuator("Lifter", "CAN arm", armCANTalon);
 
    Switch0.reset(new DigitalInput(0));
    Switch1.reset(new DigitalInput(1));

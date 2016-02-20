@@ -20,6 +20,11 @@ Autonomous_queue::Autonomous_queue()
 	// arm.
 
 	AddSequential(new Drive_Forward(3.0));
-	AddSequential(new Drive_Forward(3.0));
+	//AddSequential(new Drive_Forward(3.0));
+	//AddSequential(new Turn(1.5, 0, .5));
+	//AddSequential(new Turn(2, .7, .5));
+	//AddSequential(new Turn(1, -.5, -.5));
+	AddSequential(new RollingPinThing(1));
+	AddSequential(new RollingPinThing(1));
 
 }

@@ -11,6 +11,7 @@ private:
 	// for methods that implement subsystem capabilities
 	std::shared_ptr<CANTalon> lifterCANJaguar;
 	std::shared_ptr<Spark> armLinearActuator;
+	std::shared_ptr<CANTalon> armCANTalon;
 public:
 	Lifter();
 	void InitDefaultCommand();

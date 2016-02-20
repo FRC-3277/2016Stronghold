@@ -8,6 +8,11 @@ Lifter::Lifter() :
 	lifterCANJaguar.get()->SetControlMode(CANTalon::kPercentVbus);
 	lifterCANJaguar.get()->EnableControl();
 	lifterCANJaguar.get()->Set(0.0f);
+
+	armCANTalon = RobotMap::armCANTalon;
+	armCANTalon.get()->SetControlMode(CANTalon::kPercentVbus);
+	armCANTalon.get()->EnableControl();
+	armCANTalon.get()->Set(0.0f);
 }
 
 void Lifter::InitDefaultCommand()
@@ -33,13 +38,13 @@ void Lifter::stopHorizontal(){
 }
 
 void Lifter::Raise(){
-	lifterCANJaguar.get()->Set(.5);
+	armCANTalon.get()->Set(.5);
 }
 
 void Lifter::PullUp(){
-	lifterCANJaguar.get()->Set(-.5);
+	armCANTalon.get()->Set(-.5);
 }
 
 void Lifter::Stop(){
-	lifterCANJaguar.get()->Set(0);
+	armCANTalon.get()->Set(0);
 }

@@ -10,8 +10,10 @@ class RollingPinThing: public Command
 {
 private:
 	bool finished = false;
+	float TimeCount = 0, TimeStop = 0;
 public:
 	RollingPinThing();
+	RollingPinThing(float a);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
