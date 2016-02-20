@@ -27,6 +27,8 @@ public:
 	static std::shared_ptr<CANTalon> driveTrainCANTalonRight;
 	static std::shared_ptr<RobotDrive> driveTrainRobotDrive21;
 	static std::shared_ptr<CANTalon> lifterCANTalon;
+	static std::shared_ptr<CANTalon> boulderBlasterCANTalon;
+
 
 	static std::shared_ptr<Spark> armLinearActuator;
 
