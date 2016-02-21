@@ -17,9 +17,6 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
     cANJaguarLeft = RobotMap::driveTrainCANTalonLeft;
     cANJaguarRight = RobotMap::driveTrainCANTalonRight;
     robotDrive21 = RobotMap::driveTrainRobotDrive21;
-
-    cANTalonLeft = RobotMap::driveTrainCANTalonLeft2;
-    cANTalonRight = RobotMap::driveTrainCANTalonRight2;
 }
 
 void DriveTrain::InitDefaultCommand() {
@@ -38,14 +35,5 @@ void DriveTrain::openmotors(){
 	cANJaguarLeft.get()->SetControlMode(CANSpeedController::kPercentVbus);
 	cANJaguarLeft.get()->EnableControl();
 	cANJaguarLeft.get()->Set(0.0f);
-
-	cANTalonLeft.get()->SetControlMode(CANSpeedController::kPercentVbus);
-	cANTalonLeft.get()->EnableControl();
-	cANTalonLeft.get()->Set(0.0f);
-
-	cANTalonRight.get()->SetControlMode(CANSpeedController::kPercentVbus);
-	cANTalonRight.get()->EnableControl();
-	cANTalonRight.get()->Set(0.0f);
-
 }
 

@@ -15,15 +15,14 @@
 
 std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonRight;
-std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonLeft2;
-std::shared_ptr<CANTalon> RobotMap::driveTrainCANTalonRight2;
 std::shared_ptr<RobotDrive> RobotMap::driveTrainRobotDrive21;
 
-std::shared_ptr<CANTalon> RobotMap::lifterCANTalon;
-std::shared_ptr<CANTalon> RobotMap::boulderBlasterCANTalon;
-std::shared_ptr<CANTalon> RobotMap::armCANTalon;
+std::shared_ptr<CANTalon> RobotMap::armExtendCANTalon;
+std::shared_ptr<CANTalon> RobotMap::armLinearActuatorCANTalon;
+std::shared_ptr<CANTalon> RobotMap::armWinchCANTalon1;
+std::shared_ptr<CANTalon> RobotMap::armWinchCANTalon2;
 
-std::shared_ptr<Spark> RobotMap::armLinearActuator;
+std::shared_ptr<CANTalon> RobotMap::boulderBlasterCANTalon;
 
 std::shared_ptr<Servo> RobotMap::camraPanServo;
 std::shared_ptr<Servo> RobotMap::camraTiltServo;
@@ -42,42 +41,33 @@ std::shared_ptr<DigitalInput> RobotMap::Switch9;
 void RobotMap::init() {
     LiveWindow *lw = LiveWindow::GetInstance();
 
-    driveTrainCANTalonLeft.reset(new CANTalon(1));
+    driveTrainCANTalonLeft.reset(new CANTalon(CAN_ID_DRIVE_LEFT_TALON));
     lw->AddActuator("DriveTrain", "CAN Talon Left", driveTrainCANTalonLeft);
     driveTrainCANTalonLeft.get()->SetInverted(true);
     
-    driveTrainCANTalonRight.reset(new CANTalon(2));
+    driveTrainCANTalonRight.reset(new CANTalon(CAN_ID_DRIVE_LEFT_TALON));
     lw->AddActuator("DriveTrain", "CAN Talon Right", driveTrainCANTalonRight);
     driveTrainCANTalonRight.get()->SetInverted(true);
-    
-    driveTrainCANTalonLeft2.reset(new CANTalon(3));
-    lw->AddActuator("DriveTrain", "CAN Talon Left 2", driveTrainCANTalonLeft2);
-    driveTrainCANTalonLeft2.get()->SetInverted(true);
-
-	driveTrainCANTalonRight2.reset(new CANTalon(4));
-	lw->AddActuator("DriveTrain", "CAN Talon Right 2", driveTrainCANTalonRight2);
-	driveTrainCANTalonRight2.get()->SetInverted(true);
 
 	driveTrainRobotDrive21.reset(new RobotDrive(
 			driveTrainCANTalonLeft,
-			driveTrainCANTalonLeft2,
-			driveTrainCANTalonRight,
-			driveTrainCANTalonRight2));
-
+			driveTrainCANTalonRight));
 		driveTrainRobotDrive21->SetSafetyEnabled(true);
         driveTrainRobotDrive21->SetExpiration(0.1);
         driveTrainRobotDrive21->SetSensitivity(0.5);
         driveTrainRobotDrive21->SetMaxOutput(1.0);
 
+    armExtendCANTalon.reset(new CANTalon(CAN_ID_ARM_EXTEND_TALON));
+    lw->AddActuator("Lifter", "CAN Lifter", armExtendCANTalon);
 
-    lifterCANTalon.reset(new CANTalon(5));
-    lw->AddActuator("Lifter", "CAN Lifter", lifterCANTalon);
+    armLinearActuatorCANTalon.reset(new CANTalon(CAN_ID_ARM_LINEAR_ACTUATOR_TALON));
+    lw->AddActuator("Lifter", "CAN arm", armLinearActuatorCANTalon);
 
-    armCANTalon.reset(new CANTalon(6));
-    lw->AddActuator("Lifter", "CAN arm", armCANTalon);
+    armWinchCANTalon1.reset(new CANTalon(CAN_ID_ARM_WINCH_1_TALON));
+	lw->AddActuator("Lifter", "CAN arm", armWinchCANTalon1);
 
-    armLinearActuator.reset(new Spark(0));
-
+	armWinchCANTalon2.reset(new CANTalon(CAN_ID_ARM_WINCH_1_TALON));
+	lw->AddActuator("Lifter", "CAN arm", armWinchCANTalon2);
 
 	Switch0.reset(new DigitalInput(0));
 	Switch1.reset(new DigitalInput(1));

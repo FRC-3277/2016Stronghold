@@ -7,15 +7,18 @@
 class Lifter: public Subsystem
 {
 private:
-	std::shared_ptr<CANTalon> lifterCANJaguar;
-	std::shared_ptr<Spark> armLinearActuator;
-	std::shared_ptr<CANTalon> armCANTalon;
+	std::shared_ptr<CANTalon> armExtendCANTalon;
+	std::shared_ptr<CANTalon> armLinearActuatorCANTalon;
+	std::shared_ptr<CANTalon> armWinchCANTalon1;
+	std::shared_ptr<CANTalon> armWinchCANTalon2;
+
 public:
 	Lifter();
 	void InitDefaultCommand();
 	void pushArmOut();
 	void pullArmIn();
-	void stopHorizontal();
+	void stopActuator();
+
 	void Raise();
 	void PullUp();
 	void Stop();

@@ -27,6 +27,9 @@
 #include "Subsystems/BoulderBlaster.h"
 
 class Robot : public IterativeRobot {
+private:
+	I2C* i2cBus;
+
 public:
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();

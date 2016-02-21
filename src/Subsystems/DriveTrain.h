@@ -19,8 +19,6 @@ private:
 	std::shared_ptr<CANTalon> cANJaguarLeft;
 	std::shared_ptr<CANTalon> cANJaguarRight;
 	std::shared_ptr<RobotDrive> robotDrive21;
-	std::shared_ptr<CANTalon> cANTalonLeft;
-	std::shared_ptr<CANTalon> cANTalonRight;
 public:
 	DriveTrain();
 	void InitDefaultCommand();
