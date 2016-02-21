@@ -50,6 +50,21 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
+	i2cBus->Read(0x00, 1, &visionStatus);
+	if(visionStatus != 0) //Can I see anything?
+	{
+		switch(visionStatus)
+		{
+		case 0x01: //I see the goal
+			i2cBus->Read(0x01, 1, &targetPosition);
+			break;
+		case 0x02: //I see the LowBar
+			i2cBus->Read(0x02, 1, &targetPosition);
+			break;
+		default:
+			printf("I2C error: Status is not 0, 1, or 2!");
+		}
+	}
 
 	Scheduler::GetInstance()->Run();
 }

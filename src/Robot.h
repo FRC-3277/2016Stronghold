@@ -29,6 +29,7 @@
 class Robot : public IterativeRobot {
 private:
 	I2C* i2cBus;
+	uint8_t visionStatus, targetPosition;
 
 public:
 	static std::unique_ptr<OI> oi;
