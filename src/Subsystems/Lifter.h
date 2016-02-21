@@ -11,6 +11,7 @@ private:
 	std::shared_ptr<CANTalon> armLinearActuatorCANTalon;
 	std::shared_ptr<CANTalon> armWinchCANTalon1;
 	std::shared_ptr<CANTalon> armWinchCANTalon2;
+	std::shared_ptr<Relay> armRatchet;
 
 public:
 	Lifter();

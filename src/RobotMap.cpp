@@ -21,6 +21,7 @@ std::shared_ptr<CANTalon> RobotMap::armExtendCANTalon;
 std::shared_ptr<CANTalon> RobotMap::armLinearActuatorCANTalon;
 std::shared_ptr<CANTalon> RobotMap::armWinchCANTalon1;
 std::shared_ptr<CANTalon> RobotMap::armWinchCANTalon2;
+std::shared_ptr<Relay> RobotMap::armRatchet;
 
 std::shared_ptr<CANTalon> RobotMap::boulderBlasterCANTalon;
 
@@ -68,6 +69,9 @@ void RobotMap::init() {
 
 	armWinchCANTalon2.reset(new CANTalon(CAN_ID_ARM_WINCH_1_TALON));
 	lw->AddActuator("Lifter", "CAN arm", armWinchCANTalon2);
+
+	armRatchet.reset(new Relay(0, Relay::kForwardOnly));
+	lw->AddActuator("Lifter", "Ratchet", armRatchet);
 
 	Switch0.reset(new DigitalInput(0));
 	Switch1.reset(new DigitalInput(1));

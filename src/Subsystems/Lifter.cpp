@@ -23,6 +23,8 @@ Lifter::Lifter() :
 	armWinchCANTalon2.get()->SetControlMode(CANTalon::kPercentVbus);
 	armWinchCANTalon2.get()->EnableControl();
 	armWinchCANTalon2.get()->Set(0.0f);
+
+	armRatchet = RobotMap::armExtendCANTalon;
 }
 
 void Lifter::InitDefaultCommand()
@@ -47,7 +49,10 @@ void Lifter::stopActuator()
 
 void Lifter::Raise()
 {
-	armExtendCANTalon.get()->Set(.5);
+	if(armRatchet.get()->Get() != Relay::kForward)
+		armRatchet.get()->Set(Relay::kForward);
+	else
+		armExtendCANTalon.get()->Set(.5);
 }
 
 void Lifter::PullUp()
@@ -58,6 +63,8 @@ void Lifter::PullUp()
 
 void Lifter::Stop()
 {
+	armRatchet.get()->Set(Relay::kOff);
+	armExtendCANTalon.get()->Set(0);
 	armWinchCANTalon1.get()->Set(0);
 	armWinchCANTalon2.get()->Set(0);
 }

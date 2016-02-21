@@ -28,7 +28,7 @@ void Robot::RobotInit() {
     boulderBlaster.reset(new BoulderBlaster());
 	Switch1.reset(new Switches());
 
-	i2cBus = new I2C(I2C::kMXP, 0x00);
+	i2cBus = new I2C(I2C::kMXP, 0x29);
 
     CameraServer::GetInstance()->SetQuality(50);
    	CameraServer::GetInstance()->StartAutomaticCapture("cam0");

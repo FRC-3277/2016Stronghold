@@ -38,6 +38,8 @@ public:
 	static std::shared_ptr<CANTalon> armLinearActuatorCANTalon;
 	static std::shared_ptr<CANTalon> armWinchCANTalon1;
 	static std::shared_ptr<CANTalon> armWinchCANTalon2;
+	static std::shared_ptr<Relay> armRatchet;
+
 	static std::shared_ptr<CANTalon> boulderBlasterCANTalon;
 
 	static std::shared_ptr<Servo> camraPanServo;

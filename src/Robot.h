@@ -50,5 +50,12 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
+
+	uint8_t getVisionStatus(){
+		return visionStatus;
+	}
+	uint8_t getTargetPosition(){
+		return targetPosition;
+	}
 };
 #endif
