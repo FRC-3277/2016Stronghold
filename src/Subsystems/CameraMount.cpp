@@ -9,20 +9,15 @@ CameraMount::CameraMount() :
 		Subsystem("CameraMount")
 {
 	panAngle = 0;
-	printf("%f\n", panAngle);
+	tiltAngle = 0;
 	camraPanServo = RobotMap::camraPanServo;
 	camraTiltServo = RobotMap::camraTiltServo;
 }
 
 void CameraMount::InitDefaultCommand()
 {
-	//SetDefaultCommand(new PanCameraLeft());
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-}
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+}
 
 void CameraMount::panLeft(){
 	panAngle = panAngle - SPEED;

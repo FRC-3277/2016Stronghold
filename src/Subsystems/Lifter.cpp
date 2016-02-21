@@ -17,34 +17,29 @@ Lifter::Lifter() :
 
 void Lifter::InitDefaultCommand()
 {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
 
 }
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
-void Lifter::pushArmOut(){
+void Lifter::pushArmOut(){printf("Lifter::pushArmOut\n");
 	armLinearActuator.get()->Set(1);
 }
 
-void Lifter::pullArmIn(){
+void Lifter::pullArmIn(){printf("Lifter::pullArmIn\n");
 	armLinearActuator.get()->Set(-1);
 }
 
-void Lifter::stopHorizontal(){
+void Lifter::stopHorizontal(){printf("Lifter::stopHorizontal\n");
 	armLinearActuator.get()->Set(0);
 }
 
-void Lifter::Raise(){
-	armCANTalon.get()->Set(.5);
+void Lifter::Raise(){printf("Lifter::Raise\n");
+	lifterCANJaguar.get()->Set(.5);
 }
 
-void Lifter::PullUp(){
-	armCANTalon.get()->Set(-.5);
+void Lifter::PullUp(){printf("Lifter::PullUp\n");
+	lifterCANJaguar.get()->Set(-.5);
 }
 
-void Lifter::Stop(){
-	armCANTalon.get()->Set(0);
+void Lifter::Stop(){printf("Lifter::Stop\n");
+	lifterCANJaguar.get()->Set(0);
 }

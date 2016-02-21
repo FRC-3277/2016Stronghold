@@ -7,8 +7,6 @@
 class Switches: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
 	std::shared_ptr<DigitalInput> Switch0;
 	std::shared_ptr<DigitalInput> Switch1;
 	std::shared_ptr<DigitalInput> Switch2;

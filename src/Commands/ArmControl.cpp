@@ -3,17 +3,13 @@
 ArmControl::ArmControl(): Command ()
 {
 	Requires(Robot::lifter.get());
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 }
 
-// Called just before this Command runs the first time
 void ArmControl::Initialize()
 {
 
 }
 
-// Called repeatedly when this Command is scheduled to run
 void ArmControl::Execute()
 {
 	if (Robot::oi.get()->getXBoxController().get()->GetRawButton(2) == true){
@@ -24,7 +20,6 @@ void ArmControl::Execute()
 	}
 }
 
-// Make this return true when this Command no longer needs to run execute()
 bool ArmControl::IsFinished()
 {
 	if(Robot::oi.get()->getXBoxController().get()->GetRawButton(1) == false &&
@@ -36,14 +31,11 @@ bool ArmControl::IsFinished()
 	return false;
 }
 
-// Called once after isFinished returns true
 void ArmControl::End()
 {
 	Robot::lifter.get()->Stop();
 }
 
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
 void ArmControl::Interrupted()
 {
 
