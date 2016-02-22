@@ -5,6 +5,7 @@
 #include "WPILib.h"
 #include "../Subsystems/BoulderBlaster.h"
 #include "../Robot.h"
+#include "../OI.h"
 
 class RollingPinThing: public Command
 {

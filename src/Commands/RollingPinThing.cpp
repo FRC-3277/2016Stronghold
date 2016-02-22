@@ -22,7 +22,7 @@ void RollingPinThing::Initialize()
 void RollingPinThing::Execute()
 {
 	finished = false;
-
+	printf("Rolling:Execute\n");
 	if(Robot::getInstance().IsAutonomous() == true)
 	{printf ("I'm here %d\n", hasEatenBall);
 		TimeCount += 0.02;
@@ -36,18 +36,21 @@ void RollingPinThing::Execute()
 			Robot::boulderBlaster.get()->SpitBallOut();}
 
 	}
-	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(7) == true){
+	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(6) == true){
 		printf("Still working");
 		Robot::boulderBlaster.get()->EatBall();
+		printf("EatBall\n");
 	}
-	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(8)){
+	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(5)){
 		printf("I'm still working");
 		Robot::boulderBlaster.get()->SpitBallOut();
+		printf("SpitOut\n");
 	}
 	else
 	{
 		Robot::boulderBlaster.get()->StopMotor();
 		finished = true;
+		printf("STOP\n");
 	}
 }
 

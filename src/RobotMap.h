@@ -22,13 +22,15 @@
  */
 class RobotMap {
 public:
-	static const int CAN_ID_DRIVE_LEFT_TALON = 1;
-	static const int CAN_ID_DRIVE_RIGHT_TALON = 2;
-	static const int CAN_ID_ARM_LINEAR_ACTUATOR_TALON = 3;
-	static const int CAN_ID_ARM_EXTEND_TALON = 4;
-	static const int CAN_ID_ARM_WINCH_1_TALON = 5;
+	static const int CAN_ID_DRIVE_LEFT_TALON = 7;
+	static const int CAN_ID_DRIVE_RIGHT_TALON = 3;
+	static const int CAN_ID_ARM_LINEAR_ACTUATOR_TALON = 4;
+	static const int CAN_ID_ARM_EXTEND_TALON = 2;
+	static const int CAN_ID_ARM_WINCH_1_TALON = 1;
 	static const int CAN_ID_ARM_WINCH_2_TALON = 6;
-	static const int CAN_ID_BOULDER_BLASTER_TALON = 7;
+	static const int CAN_ID_BOULDER_BLASTER_TALON = 5;
+
+	static const bool TIMED_DISABLE_ARM = false;
 
 	static std::shared_ptr<CANTalon> driveTrainCANTalonLeft;
 	static std::shared_ptr<CANTalon> driveTrainCANTalonRight;

@@ -16,11 +16,12 @@ private:
 public:
 	Lifter();
 	void InitDefaultCommand();
-	void pushArmOut();
-	void pullArmIn();
+
+	void raiseArm();
+	void lowerArm();
 	void stopActuator();
 
-	void Raise();
+	void extendArm();
 	void PullUp();
 	void Stop();
 };

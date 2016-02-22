@@ -46,7 +46,7 @@ void RobotMap::init() {
     lw->AddActuator("DriveTrain", "CAN Talon Left", driveTrainCANTalonLeft);
     driveTrainCANTalonLeft.get()->SetInverted(true);
     
-    driveTrainCANTalonRight.reset(new CANTalon(CAN_ID_DRIVE_LEFT_TALON));
+    driveTrainCANTalonRight.reset(new CANTalon(CAN_ID_DRIVE_RIGHT_TALON));
     lw->AddActuator("DriveTrain", "CAN Talon Right", driveTrainCANTalonRight);
     driveTrainCANTalonRight.get()->SetInverted(true);
 
@@ -87,6 +87,6 @@ void RobotMap::init() {
 	camraPanServo.reset(new Servo(9));
 	camraTiltServo.reset(new Servo(8));
 
-    boulderBlasterCANTalon.reset(new CANTalon(7));
+    boulderBlasterCANTalon.reset(new CANTalon(CAN_ID_BOULDER_BLASTER_TALON));
     lw->AddActuator("BoulderBlaster", "CAN BoulderBlaster", boulderBlasterCANTalon);
 }

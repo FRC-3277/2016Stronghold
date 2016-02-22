@@ -24,6 +24,14 @@ public:
 
 	std::shared_ptr<Joystick> getXBoxController();
 
+	const int EAT_BALL_BUTTON = XBOX_LEFT_SHOLDER_BUTTON;
+	const int SPIT_BALL_BUTTON = XBOX_RIGHT_SHOLDER_BUTTON;
+
+	const int ARM_RAISE_BUTTON = XBOX_A_BUTTON;
+	const int ARM_LOWER_BUTTON = XBOX_B_BUTTON;
+	const int ARM_EXTEND_BUTTON = XBOX_A_BUTTON;
+	const int ARM_WINCH_BUTTON = XBOX_B_BUTTON;
+
 	const int XBOX_A_BUTTON = 1;
 	const int XBOX_B_BUTTON = 2;
 	const int XBOX_X_BUTTON = 3;

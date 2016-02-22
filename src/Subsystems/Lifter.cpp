@@ -9,22 +9,22 @@ Lifter::Lifter() :
 	armExtendCANTalon.get()->EnableControl();
 	armExtendCANTalon.get()->Set(0.0f);
 
-	armLinearActuatorCANTalon = RobotMap::armExtendCANTalon;
+	armLinearActuatorCANTalon = RobotMap::armLinearActuatorCANTalon;
 	armLinearActuatorCANTalon.get()->SetControlMode(CANTalon::kPercentVbus);
 	armLinearActuatorCANTalon.get()->EnableControl();
 	armLinearActuatorCANTalon.get()->Set(0.0f);
 
-	armWinchCANTalon1 = RobotMap::armExtendCANTalon;
+	armWinchCANTalon1 = RobotMap::armWinchCANTalon1;
 	armWinchCANTalon1.get()->SetControlMode(CANTalon::kPercentVbus);
 	armWinchCANTalon1.get()->EnableControl();
 	armWinchCANTalon1.get()->Set(0.0f);
 
-	armWinchCANTalon2 = RobotMap::armExtendCANTalon;
+	armWinchCANTalon2 = RobotMap::armWinchCANTalon2;
 	armWinchCANTalon2.get()->SetControlMode(CANTalon::kPercentVbus);
 	armWinchCANTalon2.get()->EnableControl();
 	armWinchCANTalon2.get()->Set(0.0f);
 
-	armRatchet = RobotMap::armExtendCANTalon;
+	armRatchet = RobotMap::armRatchet;
 }
 
 void Lifter::InitDefaultCommand()
@@ -32,33 +32,38 @@ void Lifter::InitDefaultCommand()
 
 }
 
-void Lifter::pushArmOut()
+void Lifter::raiseArm()
 {
-	armLinearActuatorCANTalon.get()->Set(1);
+	printf("Lifter:raiseArm\n");
+	armLinearActuatorCANTalon.get()->Set(.5);
 }
 
-void Lifter::pullArmIn()
+void Lifter::lowerArm()
 {
-	armLinearActuatorCANTalon.get()->Set(-1);
+	printf("Lifter:lowerArm\n");
+	armLinearActuatorCANTalon.get()->Set(-.5);
 }
 
 void Lifter::stopActuator()
 {
+	printf("Lifter:lowerArm\n");
 	armLinearActuatorCANTalon.get()->Set(0);
 }
 
-void Lifter::Raise()
+void Lifter::extendArm()
 {
-	if(armRatchet.get()->Get() != Relay::kForward)
-		armRatchet.get()->Set(Relay::kForward);
+	printf("Lifter:extendArm\n");
+	if(armRatchet.get()->Get() != Relay::kOn)
+		armRatchet.get()->Set(Relay::kOn);
 	else
 		armExtendCANTalon.get()->Set(.5);
 }
 
 void Lifter::PullUp()
 {
-	armWinchCANTalon1.get()->Set(-.5);
-	armWinchCANTalon2.get()->Set(-.5);
+	printf("Lifter:PullUp\n");
+	armWinchCANTalon1.get()->Set(.5);
+	armWinchCANTalon2.get()->Set(.5);
 }
 
 void Lifter::Stop()
