@@ -31,24 +31,24 @@ OI::OI() {
     SmartDashboard::PutData("ArmControl", new ArmControl());
 
 
-    JoystickButton* armRaiseButton = new JoystickButton(xBoxController.get(), 1);
+    JoystickButton* armRaiseButton = new JoystickButton(xBoxController.get(), ARM_RAISE_BUTTON);
     armRaiseButton->WhenPressed(new ArmControl());
 
-    JoystickButton* armLowerButton = new JoystickButton(xBoxController.get(), 2);
+    JoystickButton* armLowerButton = new JoystickButton(xBoxController.get(), ARM_LOWER_BUTTON);
     armLowerButton->WhenPressed(new ArmControl());
 
-    JoystickButton* armExtendButton = new JoystickButton(xBoxController.get(), 3);
+    JoystickButton* armExtendButton = new JoystickButton(xBoxController.get(), ARM_EXTEND_BUTTON);
     armExtendButton->WhenPressed(new ArmControl());
 
-    JoystickButton* armWinchButton = new JoystickButton(xBoxController.get(), 4);
+    JoystickButton* armWinchButton = new JoystickButton(xBoxController.get(), ARM_WINCH_BUTTON);
     armWinchButton->WhenPressed(new ArmControl());
 
 
 
-    JoystickButton* eatBallButton = new JoystickButton(xBoxController.get(), 5);
+    JoystickButton* eatBallButton = new JoystickButton(xBoxController.get(), EAT_BALL_BUTTON);
     eatBallButton->WhenPressed(new RollingPinThing());
 
-	JoystickButton* spitBallButton = new JoystickButton(xBoxController.get(), 6);
+	JoystickButton* spitBallButton = new JoystickButton(xBoxController.get(), SPIT_BALL_BUTTON);
 	spitBallButton->WhenPressed(new RollingPinThing());
 
 }

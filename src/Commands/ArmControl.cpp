@@ -15,19 +15,19 @@ void ArmControl::Execute()
 	printf("ArmControl:Execute\n");
 	//if(/*RobotMap::TIMED_DISABLE_ARM && */DriverStation::GetInstance().GetMatchTime() >= 120)
 	{
-		if (Robot::oi.get()->getXBoxController().get()->GetRawButton(1) == true){
+		if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_RAISE_BUTTON) == true){
 			printf("ArmControl:raiseArm\n");
 			Robot::lifter.get()->raiseArm();
 		}
-		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(2)){
+		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_LOWER_BUTTON)){
 			printf("ArmControl:LowerArm\n");
 			Robot::lifter.get()->lowerArm();
 		}
-		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(3)){
+		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_EXTEND_BUTTON)){
 			printf("ArmControl:extendArm\n");
 			Robot::lifter.get()->extendArm();
 		}
-		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(4)){
+		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_WINCH_BUTTON)){
 			printf("ArmControl:PullUp\n");
 			Robot::lifter.get()->PullUp();
 		}
@@ -39,10 +39,10 @@ void ArmControl::Execute()
 
 bool ArmControl::IsFinished()
 {
-	if(Robot::oi.get()->getXBoxController().get()->GetRawButton(1) == false &&
-		Robot::oi.get()->getXBoxController().get()->GetRawButton(2) == false &&
-		Robot::oi.get()->getXBoxController().get()->GetRawButton(3) == false &&
-		Robot::oi.get()->getXBoxController().get()->GetRawButton(4) == false)
+	if(Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_RAISE_BUTTON) == false &&
+		Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_LOWER_BUTTON) == false &&
+		Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_EXTEND_BUTTON) == false &&
+		Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_WINCH_BUTTON) == false)
 	{
 		return true;
 	}

@@ -36,12 +36,12 @@ void RollingPinThing::Execute()
 			Robot::boulderBlaster.get()->SpitBallOut();}
 
 	}
-	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(6) == true){
+	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(SPIT_BALL_BUTTON) == true){
 		printf("Still working");
 		Robot::boulderBlaster.get()->EatBall();
 		printf("EatBall\n");
 	}
-	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(5)){
+	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(EAT_BALL_BUTTON)){
 		printf("I'm still working");
 		Robot::boulderBlaster.get()->SpitBallOut();
 		printf("SpitOut\n");

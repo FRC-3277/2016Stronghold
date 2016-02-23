@@ -3,6 +3,7 @@
 
 #include "WPILib.h"
 #include "../Robot.h"
+#include "../OI.h"
 
 class ArmControl: public Command
 {

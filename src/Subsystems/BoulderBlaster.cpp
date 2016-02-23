@@ -17,13 +17,13 @@ void BoulderBlaster::InitDefaultCommand()
 
 void BoulderBlaster::EatBall()
 {
-	boulderBlasterCANTalon.get()->Set(.5);
+	boulderBlasterCANTalon.get()->Set(.25);
 	printf("BoulderBlaster::EatBall()\n");
 }
 
 void BoulderBlaster::SpitBallOut()
 {
-	boulderBlasterCANTalon.get()->Set(-.5);
+	boulderBlasterCANTalon.get()->Set(-.75);
 }
 
 void BoulderBlaster::StopMotor()
