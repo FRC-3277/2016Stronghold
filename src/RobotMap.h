@@ -41,6 +41,7 @@ public:
 	static std::shared_ptr<CANTalon> armWinchCANTalon1;
 	static std::shared_ptr<CANTalon> armWinchCANTalon2;
 	static std::shared_ptr<Relay> armRatchet;
+	static std::shared_ptr<AnalogInput> armPotentiameter;
 
 	static std::shared_ptr<CANTalon> boulderBlasterCANTalon;
 

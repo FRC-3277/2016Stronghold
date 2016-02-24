@@ -45,11 +45,11 @@ OI::OI() {
 
 
 
-    JoystickButton* eatBallButton = new JoystickButton(xBoxController.get(), EAT_BALL_BUTTON);
-    eatBallButton->WhenPressed(new RollingPinThing());
+    JoystickButton* spitBallButton = new JoystickButton(xBoxController.get(),  SPIT_BALL_BUTTON);
+    spitBallButton->WhenPressed(new RollingPinThing());
 
-	JoystickButton* spitBallButton = new JoystickButton(xBoxController.get(), SPIT_BALL_BUTTON);
-	spitBallButton->WhenPressed(new RollingPinThing());
+	JoystickButton* eatBallButton = new JoystickButton(xBoxController.get(), EAT_BALL_BUTTON);
+	eatBallButton->WhenPressed(new RollingPinThing());
 
 }
 

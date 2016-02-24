@@ -12,6 +12,9 @@ private:
 	std::shared_ptr<CANTalon> armWinchCANTalon1;
 	std::shared_ptr<CANTalon> armWinchCANTalon2;
 	std::shared_ptr<Relay> armRatchet;
+	std::shared_ptr<AnalogInput> armPotentiameter;
+
+	int firstRun = 0;
 
 public:
 	Lifter();

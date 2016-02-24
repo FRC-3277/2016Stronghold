@@ -39,6 +39,8 @@ std::shared_ptr<DigitalInput> RobotMap::Switch7;
 std::shared_ptr<DigitalInput> RobotMap::Switch8;
 std::shared_ptr<DigitalInput> RobotMap::Switch9;
 
+std::shared_ptr<AnalogInput> RobotMap::armPotentiameter;
+
 void RobotMap::init() {
     LiveWindow *lw = LiveWindow::GetInstance();
 
@@ -67,7 +69,7 @@ void RobotMap::init() {
     armWinchCANTalon1.reset(new CANTalon(CAN_ID_ARM_WINCH_1_TALON));
 	lw->AddActuator("Lifter", "CAN arm", armWinchCANTalon1);
 
-	armWinchCANTalon2.reset(new CANTalon(CAN_ID_ARM_WINCH_1_TALON));
+	armWinchCANTalon2.reset(new CANTalon(CAN_ID_ARM_WINCH_2_TALON));
 	lw->AddActuator("Lifter", "CAN arm", armWinchCANTalon2);
 
 	armRatchet.reset(new Relay(0, Relay::kForwardOnly));

@@ -25,6 +25,8 @@ Lifter::Lifter() :
 	armWinchCANTalon2.get()->Set(0.0f);
 
 	armRatchet = RobotMap::armRatchet;
+
+	armPotentiameter = RobotMap::armPotentiameter;
 }
 
 void Lifter::InitDefaultCommand()
@@ -34,14 +36,29 @@ void Lifter::InitDefaultCommand()
 
 void Lifter::raiseArm()
 {
+	//if(armPotentiameter.get()->GetValue() < 777)
+	{
 	printf("Lifter:raiseArm\n");
-	armLinearActuatorCANTalon.get()->Set(.5);
+		armLinearActuatorCANTalon.get()->Set(1);
+	}
+	//else{
+		//printf("Lifter:raiseArm\n");
+			//armLinearActuatorCANTalon.get()->Set(0);
+	//}
 }
 
 void Lifter::lowerArm()
 {
-	printf("Lifter:lowerArm\n");
-	armLinearActuatorCANTalon.get()->Set(-.5);
+	//if(armPotentiameter.get()->GetValue() > -13)
+	{
+		printf("Lifter:lowerArm\n");
+		armLinearActuatorCANTalon.get()->Set(-.75);
+	}
+	//else
+	{
+		//printf("Lifter:lowerArm\n");
+		//armLinearActuatorCANTalon.get()->Set(0);
+	}
 }
 
 void Lifter::stopActuator()
@@ -54,16 +71,33 @@ void Lifter::extendArm()
 {
 	printf("Lifter:extendArm\n");
 	if(armRatchet.get()->Get() != Relay::kOn)
-		armRatchet.get()->Set(Relay::kOn);
+	{
+		if(firstRun  <=5) {
+			armWinchCANTalon1.get()->Set(.25);
+			armWinchCANTalon2.get()->Set(.25);
+			firstRun++;
+		}
+		else
+		{
+			armRatchet.get()->Set(Relay::kOn);
+		}
+	}
 	else
-		armExtendCANTalon.get()->Set(.5);
+		{
+		armExtendCANTalon.get()->Set(.75);
+		armWinchCANTalon1.get()->Set(-.35);
+		armWinchCANTalon2.get()->Set(-.35);
+
+		}
 }
 
 void Lifter::PullUp()
 {
 	printf("Lifter:PullUp\n");
-	armWinchCANTalon1.get()->Set(.5);
-	armWinchCANTalon2.get()->Set(.5);
+	armWinchCANTalon1.get()->Set(1);
+	armWinchCANTalon2.get()->Set(1);
+	armExtendCANTalon.get()->Set(-.25);
+
 }
 
 void Lifter::Stop()
