@@ -1,5 +1,6 @@
 #include "Lifter.h"
 #include "../RobotMap.h"
+#include "../Commands/ArmControl.h"
 
 Lifter::Lifter() :
 		Subsystem("ExampleSubsystem")
@@ -31,7 +32,7 @@ Lifter::Lifter() :
 
 void Lifter::InitDefaultCommand()
 {
-
+	//SetDefaultCommand(new ArmControl());
 }
 
 void Lifter::raiseArm()

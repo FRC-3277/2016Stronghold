@@ -53,6 +53,9 @@ OI::OI() {
 	JoystickButton* eatBallButton = new JoystickButton(xBoxController2.get(), EAT_BALL_BUTTON);
 	eatBallButton->WhenPressed(new RollingPinThing());
 
+
+
+
 }
 
 std::shared_ptr<Joystick> OI::getXBoxController() {
