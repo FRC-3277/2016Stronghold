@@ -33,24 +33,26 @@
 #define XBOX_RIGHT_STICK_Y_AXIS 5
 
 
-#define EAT_BALL_BUTTON XBOX_LEFT_SHOLDER_BUTTON
+#define EAT_BALL_BUTTON XBOX_RIGHT_SHOLDER_BUTTON
 #define SPIT_BALL_BUTTON XBOX_RIGHT_SHOLDER_BUTTON
 
-#define ARM_RAISE_BUTTON XBOX_A_BUTTON
-#define ARM_LOWER_BUTTON XBOX_B_BUTTON
-#define ARM_EXTEND_BUTTON XBOX_X_BUTTON
-#define ARM_WINCH_BUTTON XBOX_Y_BUTTON
+#define ARM_RAISE_BUTTON XBOX_Y_BUTTON
+#define ARM_LOWER_BUTTON XBOX_A_BUTTON
+#define ARM_EXTEND_BUTTON XBOX_Y_BUTTON
+#define ARM_WINCH_BUTTON XBOX_A_BUTTON
 
 
 class OI {
 private:
 
 	std::shared_ptr<Joystick> xBoxController;
+	std::shared_ptr<Joystick> xBoxController2;
 
 public:
 	OI();
 
 	std::shared_ptr<Joystick> getXBoxController();
+	std::shared_ptr<Joystick> getXBoxController2();
 
 };
 

@@ -23,6 +23,8 @@
 
 OI::OI() {
     xBoxController.reset(new Joystick(0));
+    xBoxController2.reset(new Joystick(1));
+
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("DriveWithJoysticks", new DriveWithJoysticks());
@@ -31,10 +33,10 @@ OI::OI() {
     SmartDashboard::PutData("ArmControl", new ArmControl());
 
 
-    JoystickButton* armRaiseButton = new JoystickButton(xBoxController.get(), ARM_RAISE_BUTTON);
+    JoystickButton* armRaiseButton = new JoystickButton(xBoxController2.get(), ARM_RAISE_BUTTON);
     armRaiseButton->WhenPressed(new ArmControl());
 
-    JoystickButton* armLowerButton = new JoystickButton(xBoxController.get(), ARM_LOWER_BUTTON);
+    JoystickButton* armLowerButton = new JoystickButton(xBoxController2.get(), ARM_LOWER_BUTTON);
     armLowerButton->WhenPressed(new ArmControl());
 
     JoystickButton* armExtendButton = new JoystickButton(xBoxController.get(), ARM_EXTEND_BUTTON);
@@ -48,7 +50,7 @@ OI::OI() {
     JoystickButton* spitBallButton = new JoystickButton(xBoxController.get(),  SPIT_BALL_BUTTON);
     spitBallButton->WhenPressed(new RollingPinThing());
 
-	JoystickButton* eatBallButton = new JoystickButton(xBoxController.get(), EAT_BALL_BUTTON);
+	JoystickButton* eatBallButton = new JoystickButton(xBoxController2.get(), EAT_BALL_BUTTON);
 	eatBallButton->WhenPressed(new RollingPinThing());
 
 }
@@ -56,4 +58,8 @@ OI::OI() {
 std::shared_ptr<Joystick> OI::getXBoxController() {
    return xBoxController;
 }
+std::shared_ptr<Joystick> OI::getXBoxController2() {
+	return xBoxController2;
+}
+
 
