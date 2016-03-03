@@ -65,7 +65,7 @@ void Robot::AutonomousPeriodic() {
 			printf("I2C error: Status is not 0, 1, or 2!");
 		}
 	}
-
+	printf("VisionStatus: %d\tTarget: %d\n", visionStatus, targetPosition);
 	Scheduler::GetInstance()->Run();
 }
 

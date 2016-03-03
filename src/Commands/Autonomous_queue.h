@@ -6,6 +6,7 @@
 #include "WPILib.h"
 #include "Drive_Forward.h"
 #include "RollingPinThing.h"
+#include "AutonomousCommand.h"
 
 class Autonomous_queue: public CommandGroup
 {

@@ -13,24 +13,26 @@
 
 AutonomousCommand::AutonomousCommand(): Command() {
 	Requires(Robot::driveTrain.get());
-	Requires(Robot::Switch1.get());
 	Requires(Robot::lifter.get());
 
 }
 
 void AutonomousCommand::Initialize() {
-	Robot::driveTrain.get()->openmotors();
+
 }
 
 void AutonomousCommand::Execute() {
-	//Robot::driveTrain.get()->setdrive(.5, .5);
-	int switchValues = Robot::Switch1.get()->RetrieveSwitches();
+	switch(visionStatus){
+	case 0: //Nothing seen
+		break;
+	case 1: //tower
 
-	if(CheckDigitalInputChannel(1))
-		Robot::lifter.get()->PullUp();
-	//else if(CheckDigitalInputChannel(2))
-	//	Robot::lifter.get()->Raise();
-
+		break;
+	case 2: //lowbar
+		break;
+	default:
+		printf("I DON'T KNOW WHAT i SEE!!!");
+	}
 }
 
 bool AutonomousCommand::IsFinished() {
