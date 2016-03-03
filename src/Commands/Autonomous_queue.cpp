@@ -19,12 +19,31 @@ Autonomous_queue::Autonomous_queue()
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-	AddSequential(new Drive_Forward(3.0));
-	//AddSequential(new Drive_Forward(3.0));
-	//AddSequential(new Turn(1.5, 0, .5));
-	//AddSequential(new Turn(2, .7, .5));
-	//AddSequential(new Turn(1, -.5, -.5));
-	AddSequential(new RollingPinThing(1));
-	AddSequential(new RollingPinThing(1));
+
+
+	if(RobotMap::Switch0.get()->Get() == true){
+		AddSequential(new Drive_Forward(3.0));
+		//AddSequential(new Drive_Forward(3.0));
+		//AddSequential(new Turn(1.5, 0, .5));
+		//AddSequential(new Turn(2, .7, .5));
+		//AddSequential(new Turn(1, -.5, -.5));
+		AddSequential(new RollingPinThing(1));
+		AddSequential(new RollingPinThing(1));
+	}
+	else if(RobotMap::Switch1.get()->Get() == true){
+
+	}
+	else if(RobotMap::Switch2.get()->Get() == true){
+
+	}
+	else if(RobotMap::Switch3.get()->Get() == true){
+
+	}
+	else if(RobotMap::Switch4.get()->Get() == true){
+
+	}
+	else if(RobotMap::Switch5.get()->Get() == true){
+
+	}
 
 }

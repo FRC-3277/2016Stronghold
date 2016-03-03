@@ -23,11 +23,11 @@ void ArmControl::Execute()
 			printf("ArmControl:LowerArm\n");
 			Robot::lifter.get()->lowerArm();
 		}
-		else if (Robot::oi.get()->getXBoxController().get()->GetPOV(0) == 0){
+		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_EXTEND_BUTTON)){
 			printf("ArmControl:extendArm\n");
 			Robot::lifter.get()->extendArm();
 		}
-		else if (Robot::oi.get()->getXBoxController().get()->GetPOV(0) == 90){
+		else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_WINCH_BUTTON)){
 			printf("ArmControl:PullUp\n");
 			Robot::lifter.get()->PullUp();
 		}
@@ -41,8 +41,8 @@ bool ArmControl::IsFinished()
 {
 	if(Robot::oi.get()->getXBoxController2().get()->GetRawButton(ARM_RAISE_BUTTON) == false &&
 		Robot::oi.get()->getXBoxController2().get()->GetRawButton(ARM_LOWER_BUTTON) == false &&
-		Robot::oi.get()->getXBoxController().get()->GetPOV(0) != 0 &&
-		Robot::oi.get()->getXBoxController().get()->GetPOV(0) != 90)
+		Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_EXTEND_BUTTON) == false &&
+		Robot::oi.get()->getXBoxController().get()->GetRawButton(ARM_WINCH_BUTTON) == false)
 	{
 		return true;
 	}
