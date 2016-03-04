@@ -24,6 +24,7 @@ void DriveTrain::InitDefaultCommand() {
 }
 
 void DriveTrain::setdrive(float speedleft, float speedright){
+	printf("Left: %f\tRight: %f\n", speedleft, speedright);
 	robotDrive21.get()->TankDrive(speedleft, speedright);
 }
 

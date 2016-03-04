@@ -22,7 +22,7 @@ void AutonomousCommand::Initialize() {
 }
 
 void AutonomousCommand::Execute() {
-	switch(visionStatus){
+	/*switch(_3277_visionStatus){
 	case 0: //Nothing seen
 		break;
 	case 1: //tower
@@ -32,7 +32,7 @@ void AutonomousCommand::Execute() {
 		break;
 	default:
 		printf("I DON'T KNOW WHAT i SEE!!!");
-	}
+	}*/
 }
 
 bool AutonomousCommand::IsFinished() {

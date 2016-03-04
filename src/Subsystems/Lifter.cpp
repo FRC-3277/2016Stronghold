@@ -71,23 +71,20 @@ void Lifter::stopActuator()
 void Lifter::extendArm()
 {
 	printf("Lifter:extendArm\n");
-	if(armRatchet.get()->Get() != Relay::kOn)
-	{
-		if(firstRun  <=5) {
+	armRatchet.get()->Set(Relay::kOn);
+	//if(armRatchet.get()->Get() != Relay::kOff)
+	//{
+		if(firstRun  <=25) {
 			armWinchCANTalon1.get()->Set(.25);
 			armWinchCANTalon2.get()->Set(.25);
 			firstRun++;
 		}
-		else
-		{
-			armRatchet.get()->Set(Relay::kOn);
-		}
-	}
+//	}
 	else
 		{
 		armExtendCANTalon.get()->Set(.75);
-		armWinchCANTalon1.get()->Set(-.35);
-		armWinchCANTalon2.get()->Set(-.35);
+		armWinchCANTalon1.get()->Set(-.20);
+		armWinchCANTalon2.get()->Set(-.20);
 
 		}
 }

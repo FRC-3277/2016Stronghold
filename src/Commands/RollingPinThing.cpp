@@ -27,7 +27,7 @@ void RollingPinThing::Execute()
 	{printf ("I'm here %d\n", hasEatenBall);
 		TimeCount += 0.02;
 
-		if(hasEatenBall == false){
+		if(hasEatenBall == true){
 			printf("Working");
 			Robot::boulderBlaster.get()->EatBall();
 		}
@@ -36,7 +36,7 @@ void RollingPinThing::Execute()
 			Robot::boulderBlaster.get()->SpitBallOut();}
 
 	}
-	else if (Robot::oi.get()->getXBoxController().get()->GetRawButton(SPIT_BALL_BUTTON) == true){
+	else if (Robot::oi.get()->getXBoxController2().get()->GetRawButton(SPIT_BALL_BUTTON) == true){
 		printf("Still working");
 		Robot::boulderBlaster.get()->EatBall();
 		printf("EatBall\n");

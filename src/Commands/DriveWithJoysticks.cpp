@@ -21,8 +21,10 @@ void DriveWithJoysticks::Initialize() {
 }
 
 void DriveWithJoysticks::Execute() {
-	Robot::driveTrain.get()->setdrive(Robot::oi.get()->getXBoxController().get()->GetY(),
-			Robot::oi.get()->getXBoxController().get()->GetRawAxis(5));
+	if(Robot::getInstance().IsOperatorControl() == true){
+		Robot::driveTrain.get()->setdrive(Robot::oi.get()->getXBoxController().get()->GetY(),
+				Robot::oi.get()->getXBoxController().get()->GetRawAxis(5));
+	}
 }
 
 bool DriveWithJoysticks::IsFinished() {

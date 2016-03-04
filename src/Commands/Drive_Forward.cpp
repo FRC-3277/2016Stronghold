@@ -14,7 +14,7 @@ void Drive_Forward::Initialize()
 
 void Drive_Forward::Execute()
 {
-	Robot::driveTrain.get()->setdrive(-.5, -.5);
+	Robot::driveTrain.get()->setdrive(-.85, -.85);
 	TimeCount += 0.02;
 }
 

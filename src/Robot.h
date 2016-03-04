@@ -26,7 +26,7 @@
 #include "Subsystems/Switches.h"
 #include "Subsystems/BoulderBlaster.h"
 
-uint8_t visionStatus, targetPosition;
+//uint8_t _3277_visionStatus, _3277_targetPosition;
 
 class Robot : public IterativeRobot {
 private:
@@ -51,12 +51,5 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
-
-	uint8_t getVisionStatus(){
-		return visionStatus;
-	}
-	uint8_t getTargetPosition(){
-		return targetPosition;
-	}
 };
 #endif
