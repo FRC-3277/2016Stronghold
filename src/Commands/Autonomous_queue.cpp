@@ -26,7 +26,6 @@ Autonomous_queue::Autonomous_queue()
 	printf("Running atuo\n");
 	if(RobotMap::Switch1.get()->Get() == false){
 		printf("Switch0 in Auto");
-
 		AddSequential(new Drive_Forward(3.0));
 		AddSequential(new Turn(1.5, .75, 0));
 		AddSequential(new Turn(2.5, .75, .75));
