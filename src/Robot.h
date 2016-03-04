@@ -26,12 +26,7 @@
 #include "Subsystems/Switches.h"
 #include "Subsystems/BoulderBlaster.h"
 
-//uint8_t _3277_visionStatus, _3277_targetPosition;
-
 class Robot : public IterativeRobot {
-private:
-	I2C* i2cBus;
-
 public:
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();

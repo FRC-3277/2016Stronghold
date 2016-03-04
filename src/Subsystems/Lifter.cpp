@@ -1,6 +1,7 @@
 #include "Lifter.h"
 #include "../RobotMap.h"
 #include "../Commands/ArmControl.h"
+#include "../OI.h"
 
 Lifter::Lifter() :
 		Subsystem("ExampleSubsystem")
@@ -53,13 +54,20 @@ void Lifter::lowerArm()
 	//if(armPotentiameter.get()->GetValue() > -13)
 	{
 		printf("Lifter:lowerArm\n");
-		armLinearActuatorCANTalon.get()->Set(-.75);
 	}
-	//else
+	if((Robot::oi.get()->getXBoxController2().get()->GetRawButton(ARM_WINCH_FULL_POWER_BUTTON) == true))
 	{
+		armLinearActuatorCANTalon.get()->Set(-1);
+	}
+	else
+		armLinearActuatorCANTalon.get()->Set(-.75);
+
+
+	//else
+	//{
 		//printf("Lifter:lowerArm\n");
 		//armLinearActuatorCANTalon.get()->Set(0);
-	}
+	//}
 }
 
 void Lifter::stopActuator()

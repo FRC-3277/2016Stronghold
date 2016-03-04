@@ -31,6 +31,7 @@ void ArmControl::Execute()
 			printf("ArmControl:PullUp\n");
 			Robot::lifter.get()->PullUp();
 		}
+
 		else{
 			printf("ArmControl:Stop\n");
 		}

@@ -27,7 +27,7 @@ public:
 	virtual void Interrupted();
 
 private:
-
+	I2C* i2cBus;
 };
 
 #endif

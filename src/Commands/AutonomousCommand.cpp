@@ -11,6 +11,8 @@
 
 #include "AutonomousCommand.h"
 
+uint8_t _3277_visionStatus, _3277_targetPosition;
+
 AutonomousCommand::AutonomousCommand(): Command() {
 	Requires(Robot::driveTrain.get());
 	Requires(Robot::lifter.get());
@@ -18,11 +20,28 @@ AutonomousCommand::AutonomousCommand(): Command() {
 }
 
 void AutonomousCommand::Initialize() {
-
+	i2cBus = new I2C(I2C::kMXP, 0x29);
 }
 
 void AutonomousCommand::Execute() {
-	/*switch(_3277_visionStatus){
+	i2cBus->Read(0x00, 1, &_3277_visionStatus);
+	if(_3277_visionStatus != 0) //Can I see anything?
+	{
+		switch(_3277_visionStatus)
+		{
+		case 0x01: //I see the goal
+			i2cBus->Read(0x01, 1, &_3277_targetPosition);
+			break;
+		case 0x02: //I see the LowBar
+			i2cBus->Read(0x02, 1, &_3277_targetPosition);
+			break;
+		default:
+			printf("I2C error: Status is not 0, 1, or 2!");
+		}
+	}
+	printf("VisionStatus: %d\tTarget: %d\n", _3277_visionStatus, _3277_targetPosition);
+
+	switch(_3277_visionStatus){
 	case 0: //Nothing seen
 		break;
 	case 1: //tower
@@ -32,7 +51,7 @@ void AutonomousCommand::Execute() {
 		break;
 	default:
 		printf("I DON'T KNOW WHAT i SEE!!!");
-	}*/
+	}
 }
 
 bool AutonomousCommand::IsFinished() {
