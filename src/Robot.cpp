@@ -21,12 +21,12 @@ std::shared_ptr<BoulderBlaster> Robot::boulderBlaster;
 void Robot::RobotInit() {
 	RobotMap::init();
 
+	Switch1.reset(new Switches());
 	autonomous_queue.reset(new Autonomous_queue());
 	driveTrain.reset(new DriveTrain());
     camraMount.reset(new CameraMount());
     lifter.reset(new Lifter());
     boulderBlaster.reset(new BoulderBlaster());
-	Switch1.reset(new Switches());
 
 	i2cBus = new I2C(I2C::kMXP, 0x29);
 

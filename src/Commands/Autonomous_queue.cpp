@@ -21,52 +21,47 @@ Autonomous_queue::Autonomous_queue()
 
 	//AddSequential(new RollingPinThing(1));
 
-	AddSequential(new Drive_Forward(3.0));
-	AddSequential(new Turn(1.5, .75, 0));
-	AddSequential(new Turn(2.5, .75, .75));
-	AddSequential(new RollingPinThing(1));
 	//AddSequential(new RollingPinThing(1));
 
-
-	/*if(RobotMap::Switch0.get()->Get() == false){
+	printf("Running atuo\n");
+	if(RobotMap::Switch1.get()->Get() == false){
 		printf("Switch0 in Auto");
 
-		//AddSequential(new Drive_Forward(3.0));
-		//AddSequential(new Turn(2, 0, .5));
-		//AddSequential(new Turn(2, -.5, -.5));
-		/*
-		//AddSequential(new Drive_Forward(3.0));
-		//AddSequential(new Turn(1.5, 0, .5));
-		//AddSequential(new Turn(2, .7, .5));
-		//AddSequential(new Turn(1, -.5, -.5));
-		AddSequential(new RollingPinThing(1));
+		AddSequential(new Drive_Forward(3.0));
+		AddSequential(new Turn(1.5, .75, 0));
+		AddSequential(new Turn(2.5, .75, .75));
 		AddSequential(new RollingPinThing(1));
 	}
-	else if(RobotMap::Switch1.get()->Get() == false){
+	else if(RobotMap::Switch2.get()->Get() == false){
 		printf("\nSwitch1 in Auto");
 		//AddSequential(new Drive_Forward(3.0));
-	}
-
-
-
-	else if(RobotMap::Switch2.get()->Get() == false){
-		printf("\nSwitch2 in Auto");
+		AddSequential(new RollingPinThing(0.5));
 	}
 	else if(RobotMap::Switch3.get()->Get() == false){
-		printf("\nSwitch3 in Auto");
+		printf("\nSwitch2 in Auto");
+		AddSequential(new RollingPinThing(5.0));
 	}
 	else if(RobotMap::Switch4.get()->Get() == false){
-		printf("\nSwitch4 in Auto");
+		printf("\nSwitch3 in Auto");
+		AddSequential(new RollingPinThing(1.5));
 	}
 	else if(RobotMap::Switch5.get()->Get() == false){
-		printf("\nSwitch5 in Auto");
+		printf("\nSwitch4 in Auto");
+		AddSequential(new RollingPinThing(2.0));
 	}
-	else if(RobotMap::Switch1.get()->Get() == true){
+	else if(RobotMap::Switch6.get()->Get() == false){
+		printf("\nSwitch5 in Auto");
+		AddSequential(new RollingPinThing(2.5));
+	}
+	else if(RobotMap::Switch7.get()->Get() == true){
 		printf("\nSwitch1 in Auto working true");
+		AddSequential(new RollingPinThing(3));
 	}
 	else{
 		printf("\n????");
-	}*/
+		AddSequential(new RollingPinThing(4));
+	}
+
 
 
 	//AddSequential(new AutonomousCommand());
