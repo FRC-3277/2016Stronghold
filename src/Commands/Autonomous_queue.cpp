@@ -103,9 +103,11 @@ Autonomous_queue::Autonomous_queue()
 		printf("\nSwitch9 in Auto working true");
 
 		//Same as 3, right crossing w/out shooting
-		AddSequential(new Turn(4.5, .9, .9));
-		AddSequential(new Turn(1.85, .15, .75));
-		AddSequential(new Turn(3.0, .75, .75));
+		//AddSequential(new Turn(4.5, .9, .9));
+		//AddSequential(new Turn(1.85, .15, .75));
+		//AddSequential(new Turn(3.0, .75, .75));
+		AddSequential(new Turn(3, .85, .85));
+		AddSequential(new Turn(3, -.5, -.5));
 
 	}
 	else{
