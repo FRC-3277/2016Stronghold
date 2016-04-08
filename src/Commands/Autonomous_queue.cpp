@@ -25,22 +25,22 @@ Autonomous_queue::Autonomous_queue()
 
 	printf("Running auto\n");
 	if(RobotMap::Switch1.get()->Get() == false){
-		printf("Switch0 in Auto");
+		printf("Switch1 in Auto");
 
 		//if placed on low bar, drive forward, turn right, go forward, shoot, back up,
 		AddSequential(new Drive_Forward(3.0));
-		AddSequential(new Turn(1.25, .75, 0));
-		AddSequential(new Turn(3.15, .75, .75));
+		AddSequential(new Turn(1.25, .85, 0));
+		AddSequential(new Turn(3.35, .75, .75));
 		AddSequential(new RollingPinThing(1));
-		AddSequential(new Turn(1, 0, 0));
-		AddSequential(new Turn(3, -.75, -.75));
-		AddSequential(new Turn(1.25, -75, 0));
+		//AddSequential(new Turn(1, 0, 0));
+		//AddSequential(new Turn(3, -.75, -.75));
+		//AddSequential(new Turn(1.25, -75, 0));
 	}
 	else if(RobotMap::Switch2.get()->Get() == false){
-		printf("\nSwitch1 in Auto");
+		printf("\nSwitch2 in Auto");
 
 		//if placed in middle, drive forward, turn right, turn left, go forward, shoot right side
-		AddSequential(new Drive_Forward(3.0));
+		AddSequential(new Drive_Forward(3.5));
 		AddSequential(new Turn(1.5, .75, 0));
 		AddSequential(new Turn(1, .75, .75));
 		AddSequential(new Turn(1, 0, .75));
@@ -48,41 +48,65 @@ Autonomous_queue::Autonomous_queue()
 		AddSequential(new RollingPinThing(1));
 	}
 	else if(RobotMap::Switch3.get()->Get() == false){
-		printf("\nSwitch2 in Auto");
+		printf("\nSwitch3 in Auto");
 		//AddSequential(new RollingPinThing(1.0));
 
 		//placed right side, go forward, turn left, go forward, shoot
-		AddSequential(new Turn(3.5, .9, .9));
-		AddSequential(new Turn(1.5, 0, .75));
-		AddSequential(new Turn(3.15, .75, .75));
+		AddSequential(new Turn(4.5, .9, .9));
+		AddSequential(new Turn(1.85, .15, .75));
+		AddSequential(new Turn(3.0, .75, .75));
 		AddSequential(new RollingPinThing(1));
-		AddSequential(new Turn(1, 0, 0));
-		AddSequential(new Turn(3, -.75, -.75));
-		AddSequential(new Turn(1, 0, -.75));
+		//AddSequential(new Turn(1, 0, 0));
+		//AddSequential(new Turn(3, -.75, -.75));
+		//AddSequential(new Turn(1, -.15, -.75));
 	}
 	else if(RobotMap::Switch4.get()->Get() == false){
-		printf("\nSwitch3 in Auto");
+		printf("\nSwitch4 in Auto");
 		//AddSequential(new RollingPinThing(1.5));
 
 		//no movement
 	}
 	else if(RobotMap::Switch5.get()->Get() == false){
-		printf("\nSwitch4 in Auto");
+		printf("\nSwitch5 in Auto");
 		//AddSequential(new RollingPinThing(2.0));
 
 		//Approach barrier
 		AddSequential(new Drive_Forward(1.5));
 	}
 	else if(RobotMap::Switch6.get()->Get() == false){
-		printf("\nSwitch5 in Auto");
+		printf("\nSwitch6 in Auto");
 		//AddSequential(new RollingPinThing(2.5));
 
 		//Cross barrier only
-		AddSequential(new Turn(3, .85, .85));
+		AddSequential(new Turn(4, .85, .85));
 	}
 	else if(RobotMap::Switch7.get()->Get() == true){
-		printf("\nSwitch1 in Auto working true");
+		printf("\nSwitch7 in Auto working true");
 		//AddSequential(new RollingPinThing(3));
+
+		//Same as 1, low bar crossing w/out shooting
+		AddSequential(new Drive_Forward(3.0));
+		AddSequential(new Turn(1.25, .85, 0));
+		AddSequential(new Turn(3.35, .75, .75));
+	}
+	else if(RobotMap::Switch8.get()->Get() == true){
+		printf("\nSwitch8 in Auto working true");
+
+		//Same as 2, middle crossing w/out shooting
+		AddSequential(new Drive_Forward(3.5));
+		AddSequential(new Turn(1.5, .75, 0));
+		AddSequential(new Turn(1, .75, .75));
+		AddSequential(new Turn(1, 0, .75));
+		AddSequential(new Turn(1, .75, .75));
+	}
+	else if(RobotMap::Switch9.get()->Get() == true){
+		printf("\nSwitch9 in Auto working true");
+
+		//Same as 3, right crossing w/out shooting
+		AddSequential(new Turn(4.5, .9, .9));
+		AddSequential(new Turn(1.85, .15, .75));
+		AddSequential(new Turn(3.0, .75, .75));
+
 	}
 	else{
 		printf("\n????");

@@ -10,8 +10,9 @@
 #define CheckDigitalInputChannel(n) (switchValues & (1 << n)) //where n is the channel
 
 #include "AutonomousCommand.h"
+#include "../Subsystems/DriveTrain.h"
 
-uint8_t _3277_visionStatus, _3277_targetPosition;
+uint8_t _3277_visionStatus, _3277_targetPosition_Goal, _3277_targetPosition_Bar;
 
 AutonomousCommand::AutonomousCommand(): Command() {
 	Requires(Robot::driveTrain.get());
@@ -25,38 +26,59 @@ void AutonomousCommand::Initialize() {
 
 void AutonomousCommand::Execute() {
 	i2cBus->Read(0x00, 1, &_3277_visionStatus);
-	if(_3277_visionStatus != 0) //Can I see anything?
-	{
-		switch(_3277_visionStatus)
+	i2cBus->Read(0x01, 1, &_3277_targetPosition_Goal);
+	i2cBus->Read(0x02, 1, &_3277_targetPosition_Bar);
+
+	if (Robot::getInstance().IsAutonomous()== true){
+
+		if(_3277_visionStatus != 0) //Can I see anything?
 		{
-		case 0x01: //I see the goal
-			i2cBus->Read(0x01, 1, &_3277_targetPosition);
+			switch(_3277_visionStatus)
+			{
+				case 0x01: //I see the goal
+					i2cBus->Read(0x01, 1, &_3277_targetPosition_Goal);
+					break;
+				case 0x02: //I see the LowBar
+					i2cBus->Read(0x02, 1, &_3277_targetPosition_Bar);
+					break;
+				default:
+					printf("I2C error: Status is not 0, 1, or 2!");
+			}
+		}
+		printf("VisionStatus: %d\tTarget: %d\n", _3277_visionStatus, _3277_targetPosition_Goal, _3277_targetPosition_Bar);
+
+		switch(_3277_visionStatus){
+		case 0: //Nothing seen
 			break;
-		case 0x02: //I see the LowBar
-			i2cBus->Read(0x02, 1, &_3277_targetPosition);
+		case 1: //tower
+			if(_3277_targetPosition_Goal > 132)
+				//drive
+				Robot::driveTrain.get()->setdrive(.5, .25);
+			else if (_3277_targetPosition_Goal < 124)
+				Robot::driveTrain.get()->setdrive(.25, .5);
+			break;
+		case 2: //lowbar
+			if(_3277_targetPosition_Bar > 132)
+				//drive
+				Robot::driveTrain.get()->setdrive(.5, .25);
+			else if (_3277_targetPosition_Bar < 124)
+				Robot::driveTrain.get()->setdrive(.25, .5);
 			break;
 		default:
-			printf("I2C error: Status is not 0, 1, or 2!");
+			printf("I DON'T KNOW WHAT i SEE!!!");
 		}
 	}
-	printf("VisionStatus: %d\tTarget: %d\n", _3277_visionStatus, _3277_targetPosition);
+}
 
-	switch(_3277_visionStatus){
-	case 0: //Nothing seen
-		break;
-	case 1: //tower
-
-		break;
-	case 2: //lowbar
-		break;
-	default:
-		printf("I DON'T KNOW WHAT i SEE!!!");
+	bool AutonomousCommand::IsFinished() {
+		if ((_3277_visionStatus == 0) || (_3277_targetPosition_Goal < 132 && _3277_targetPosition_Goal > 124) ||
+				(_3277_targetPosition_Bar < 132 && _3277_targetPosition_Bar > 124))
+		{
+			return true;
+		}
+		return false;
 	}
-}
 
-bool AutonomousCommand::IsFinished() {
-    return false;
-}
 
 void AutonomousCommand::End() {
 
