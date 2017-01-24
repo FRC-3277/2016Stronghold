@@ -4,3 +4,5 @@
 *.classpath
 *.jar
 *.xml
+**/*.prefs
+*.i
